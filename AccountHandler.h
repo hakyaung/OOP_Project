@@ -1,10 +1,11 @@
 #ifndef __ACCOUNTHANDLER_H__
 #define __ACCOUNTHANDLER_H__
 #include "Account.h"
+#include "BoundCheckArray.h"
 
 class AccountHandler {
 private:
-	Account* ac[100];
+	BoundCheckArray<Account*> ac;
 	int acNumber;
 
 public:
