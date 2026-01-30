@@ -1,10 +1,12 @@
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__
 
+#include "MyStringClass.h"
+
 class Account {
 private:
 	int accountNumber;
-	char* name;
+	String name;
 	int balance;
 
 public:
@@ -18,7 +20,7 @@ public:
 
 	int getAccountNumber() const;
 	int getBalance() const;
-	char* getName() const;
+	const String& getName() const;
 
 	virtual void deposit(int money);
 	int withdrawal(int money);

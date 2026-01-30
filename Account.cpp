@@ -1,26 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <cstring>
+#include "MyStringClass.h"
 #include "Account.h"
 using namespace std;
 
-Account::Account() {
-	accountNumber = 0;
-	name = NULL;
-	balance = 0;
-}
+Account::Account() :accountNumber(0), name(), balance(0) {}
 
-Account::Account(int number, char* username, int money) :accountNumber(number), balance(money) {
-	name = new char[strlen(username) + 1];
-
-	strcpy(name, username);
-}
+Account::Account(int number, char* username, int money) :accountNumber(number), name(username),  balance(money) {}
 
 Account::Account(Account& otherAccount) {
 	accountNumber = otherAccount.accountNumber;
 	balance = otherAccount.balance;
-	name = new char[strlen(otherAccount.name) + 1];
-	strcpy(name, otherAccount.name);
+	name = otherAccount.name;
 }
 
 void Account::setAccountNumber(int number) {
@@ -28,13 +19,7 @@ void Account::setAccountNumber(int number) {
 }
 
 void Account::setName(char* username) {
-	if (name != NULL) {
-		delete[] name;
-	}
-
-	name = new char[strlen(username) + 1];
-
-	strcpy(name, username);
+	name = username;
 }
 
 void Account::setBalance(int money) {
@@ -49,7 +34,7 @@ int Account::getBalance() const {
 	return balance;
 }
 
-char* Account::getName() const {
+const String& Account::getName() const {
 	return name;
 }
 
@@ -75,5 +60,4 @@ void Account::ShowAccount() const {
 
 Account::~Account() {
 	cout << name << "[Account °´Ã¼ ¼Ò¸ê]" << endl;
-	delete[] name;
 }
